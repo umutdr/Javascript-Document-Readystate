@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="fontawesome/css/all.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 id="title">Hello World!</h1>
+    <div id="icons"></div>
+
+    <script src="jquery.min.js"></script>
+    <script src="fontawesome/js/all.js"></script>
+    <!-- To slow up the things... -->
+    <script type="module">
+      import fontawesomeIcons from './fontawesome-icons.js';
+      shuffleArray(fontawesomeIcons);
+
+      let element;
+      for (let i = 0; i < fontawesomeIcons.length; i++) {
+        element = $(document.createElement(`i`));
+
+        element.addClass(fontawesomeIcons[i].split(' '));
+        element.css({
+          'font-size': `${Math.random() * 3 + 0.5}rem`,
+          padding: '5px',
+        });
+
+        $('#icons').append(element);
+      }
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
